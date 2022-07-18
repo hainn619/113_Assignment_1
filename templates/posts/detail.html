@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ post.title }}{% endblock title %}
+
+{% block content %}
+<h1>{{ post.title }}</h1>
+<h6>{{ post.subtitle }}</h6>
+<strong>Created on: {{ post.created_on }} | By: {{ post.author }}</strong>
+<p>{{ post.body }}</p>
+
+{% if user.is_staff %}
+<div>
+    <a class="btn  btn-primary" href="{% url 'post_edit' post.id %}">Edit</a>
+    <a class="btn  btn-danger" href="{% url 'post_delete' post.id %}">Delete</a>
+</div>
+{% endif %}
+{% endblock content %}
